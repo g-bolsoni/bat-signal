@@ -1,11 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { BatHome } from './src/screens/BatHome';
+import { BatForm } from './src/screens/BatForm';
+import { useState } from 'react';
 
 export default function App() {
+  const [openForm, setOpenForm] = useState(true);
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+      {openForm ? <BatForm openForm={openForm} setOpenForm={setOpenForm} /> : <BatHome openForm={openForm} setOpenForm={setOpenForm} />}
+      <StatusBar style="light" />
     </View>
   );
 }
@@ -16,5 +21,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 15
   },
 });
